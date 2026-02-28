@@ -18,7 +18,9 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public void lock() {
-
+        if (!isPinSet) {
+            throw new IllegalStateException("no pin set");
+        }
     }
 
     @Override

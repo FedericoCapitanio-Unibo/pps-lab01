@@ -30,4 +30,10 @@ public class SmartDoorLockTest {
         assertThrows(IllegalStateException.class, () -> this.lock.unlock(testPin));
     }
 
+    @Test
+    public void lockLockShouldFailIfNoPinIsSet() {
+        final int testPin = 1234;
+        assertThrows(IllegalStateException.class, () -> this.lock.lock());
+    }
+
 }

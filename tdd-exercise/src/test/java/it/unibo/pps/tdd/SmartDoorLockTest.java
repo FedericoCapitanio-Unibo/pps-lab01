@@ -36,4 +36,10 @@ public class SmartDoorLockTest {
         assertThrows(IllegalStateException.class, () -> this.lock.lock());
     }
 
+    @Test
+    public void lockPinShouldNotBeNegativeInteger() {
+        final int testPin = -456;
+        assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin));
+    }
+
 }

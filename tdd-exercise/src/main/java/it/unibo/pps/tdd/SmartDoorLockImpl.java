@@ -6,7 +6,9 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public void setPin(int pin) {
-
+        if (pin <= 0) {
+            throw new IllegalArgumentException("pin must be positive number");
+        }
     }
 
     @Override

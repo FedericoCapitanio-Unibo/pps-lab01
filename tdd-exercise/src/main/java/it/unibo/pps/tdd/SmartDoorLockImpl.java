@@ -4,11 +4,12 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     private final int DEFAULT_PIN = -1;
     private int pin = DEFAULT_PIN;
+    private boolean isLocked = false;
 
     @Override
     public void setPin(int pin) {
         if (this.isPinSet()) {
-            throw new IllegalStateException("pin has alredy been set");
+            throw new IllegalStateException("pin has already been set");
         }
 
         if (pin <= 0) {
@@ -21,6 +22,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
         }
 
         this.pin = pin;
+        this.isLocked = true;
 
     }
 
@@ -44,7 +46,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public boolean isLocked() {
-        return false;
+        return this.isLocked;
     }
 
     @Override

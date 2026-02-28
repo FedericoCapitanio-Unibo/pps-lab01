@@ -48,6 +48,8 @@ public class SmartDoorLockImpl implements SmartDoorLock {
             throw new IllegalStateException("lock is already locked");
         }
 
+        this.isLocked = true;
+
     }
 
     @Override

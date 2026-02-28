@@ -32,13 +32,13 @@ public class SmartDoorLockTest {
 
     @Test
     public void lockLockShouldFailIfNoPinIsSet() {
-        // final int testPin = 1234;
         assertThrows(IllegalStateException.class, () -> this.lock.lock());
     }
 
     @Test
     public void lockPinShouldNotBeNegativeInteger() {
         final int testPin = -456;
+
         assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin));
     }
 
@@ -46,6 +46,7 @@ public class SmartDoorLockTest {
     public void lockPinShouldBeFourDigitsLong() {
         final int testPin1 = 12;
         final int testPin2 = 123456;
+
         assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin1));
         assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin2));
     }
@@ -60,11 +61,22 @@ public class SmartDoorLockTest {
     }
 
     @Test
-    public void lockShouldBeLockIfPinIsSet() {
+    public void lockShouldBeLockedIfPinIsSet() {
         final int testPin = 1234;
-        this.lock.setPin(testPin);
 
+        this.lock.setPin(testPin);
         assertTrue(this.lock.isLocked());
+    }
+
+    @Test
+    public void lockShouldBeRemainLockedIfUnlockPinIsWrong() {
+        final int rightTestPin = 1234;
+        final int wrongTestPin = 5678;
+
+        this.lock.setPin(rightTestPin);
+        this.lock.unlock(wrongTestPin);
+        assertTrue(this.lock.isLocked());
+
     }
 
 }

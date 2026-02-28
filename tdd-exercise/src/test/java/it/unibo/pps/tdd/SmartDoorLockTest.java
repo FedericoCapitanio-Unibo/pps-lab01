@@ -42,4 +42,12 @@ public class SmartDoorLockTest {
         assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin));
     }
 
+    @Test
+    public void lockPinShouldBeFourDigitsLong() {
+        final int testPin1 = 12;
+        final int testPin2 = 123456;
+        assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin1));
+        assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin2));
+    }
+
 }

@@ -9,6 +9,12 @@ public class SmartDoorLockImpl implements SmartDoorLock {
         if (pin <= 0) {
             throw new IllegalArgumentException("pin must be positive number");
         }
+
+        int pinLength = String.valueOf(pin).length();
+        if (pinLength != 4) {
+            throw new IllegalArgumentException("pin must be 4 characters long");
+        }
+
     }
 
     @Override

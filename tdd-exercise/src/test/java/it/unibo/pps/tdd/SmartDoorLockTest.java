@@ -96,6 +96,15 @@ public class SmartDoorLockTest {
     }
 
     @Test
+    public void lockCannotBeUnlockedIfAlreadyUnlocked() {
+        final int testPin = 1234;
+
+        this.lock.setPin(testPin);
+        this.lock.unlock(testPin);
+        assertThrows(IllegalStateException.class, () -> this.lock.unlock(testPin));
+    }
+
+    @Test
     public void lockShouldBeLockedAfterSetAndUnlock() {
         final int testPin = 1234;
 
@@ -103,6 +112,16 @@ public class SmartDoorLockTest {
         this.lock.unlock(testPin);
         this.lock.lock();
         assertTrue(this.lock.isLocked());
+    }
+
+    @Test
+    public void failedAttemptsShouldIncreaseOnUnlockFail() {
+        final int rightTestPin = 1234;
+        final int wrongTestPin = 5678;
+
+        this.lock.setPin(rightTestPin);
+        this.lock.unlock(wrongTestPin);
+        assertTrue(this.lock.getFailedAttempts() > 0);
     }
 
 }

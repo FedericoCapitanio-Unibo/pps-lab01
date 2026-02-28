@@ -76,7 +76,15 @@ public class SmartDoorLockTest {
         this.lock.setPin(rightTestPin);
         this.lock.unlock(wrongTestPin);
         assertTrue(this.lock.isLocked());
+    }
 
+    @Test
+    public void lockShouldBeUnlocked() {
+        final int testPin = 1234;
+
+        this.lock.setPin(testPin);
+        this.lock.unlock(testPin);
+        assertFalse(this.lock.isLocked());
     }
 
 }

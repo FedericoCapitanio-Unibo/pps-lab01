@@ -16,15 +16,12 @@ public class SmartDoorLockTest {
 
     @Test
     public void lockShouldNotBeLocked() {
-
         assertFalse(this.lock.isLocked());
     }
 
     @Test
     public void lockShouldNotBeBlocked() {
-
         assertFalse(this.lock.isBlocked());
-
     }
 
 }

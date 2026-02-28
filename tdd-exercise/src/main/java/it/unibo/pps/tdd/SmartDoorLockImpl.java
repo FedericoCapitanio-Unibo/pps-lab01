@@ -43,6 +43,11 @@ public class SmartDoorLockImpl implements SmartDoorLock {
         if (!this.isPinSet()) {
             throw new IllegalStateException("no pin set");
         }
+
+        if (this.isLocked()) {
+            throw new IllegalStateException("lock is already locked");
+        }
+
     }
 
     @Override

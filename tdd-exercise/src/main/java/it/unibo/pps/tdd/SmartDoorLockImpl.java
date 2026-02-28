@@ -2,10 +2,15 @@ package it.unibo.pps.tdd;
 
 public class SmartDoorLockImpl implements SmartDoorLock {
 
-    private boolean isPinSet = false;
+    private final int DEFAULT_PIN = -1;
+    private int pin = DEFAULT_PIN;
 
     @Override
     public void setPin(int pin) {
+        if (this.isPinSet()) {
+            throw new IllegalStateException("pin has alredy been set");
+        }
+
         if (pin <= 0) {
             throw new IllegalArgumentException("pin must be positive number");
         }
@@ -15,18 +20,24 @@ public class SmartDoorLockImpl implements SmartDoorLock {
             throw new IllegalArgumentException("pin must be 4 characters long");
         }
 
+        this.pin = pin;
+
+    }
+
+    public boolean isPinSet() {
+        return this.pin != DEFAULT_PIN;
     }
 
     @Override
     public void unlock(int pin) {
-        if (!isPinSet) {
+        if (!this.isPinSet()) {
             throw new IllegalStateException("no pin set");
         }
     }
 
     @Override
     public void lock() {
-        if (!isPinSet) {
+        if (!this.isPinSet()) {
             throw new IllegalStateException("no pin set");
         }
     }

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
 
-    private SmartDoorLock lock;
+    private SmartDoorLockImpl lock;
 
     @BeforeEach
     public void init() {
@@ -32,7 +32,7 @@ public class SmartDoorLockTest {
 
     @Test
     public void lockLockShouldFailIfNoPinIsSet() {
-        final int testPin = 1234;
+        // final int testPin = 1234;
         assertThrows(IllegalStateException.class, () -> this.lock.lock());
     }
 
@@ -48,6 +48,15 @@ public class SmartDoorLockTest {
         final int testPin2 = 123456;
         assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin1));
         assertThrows(IllegalArgumentException.class, () -> this.lock.setPin(testPin2));
+    }
+
+    @Test
+    public void lockPinShouldNotBeSetIfAlreadySet() {
+        final int testPin1 = 1234;
+        final int testPin2 = 4567;
+
+        this.lock.setPin(testPin1);
+        assertThrows(IllegalStateException.class, () -> this.lock.setPin(testPin2));
     }
 
 }

@@ -1,14 +1,19 @@
 package it.unibo.pps.tdd;
 
 public class SmartDoorLockImpl implements SmartDoorLock {
+
+    private boolean isPinSet = false;
+
     @Override
     public void setPin(int pin) {
-        
+
     }
 
     @Override
     public void unlock(int pin) {
-
+        if (!isPinSet) {
+            throw new IllegalStateException("no pin set");
+        }
     }
 
     @Override

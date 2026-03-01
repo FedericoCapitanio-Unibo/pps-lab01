@@ -8,6 +8,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
     private int failedAttempts = 0;
     private final int maxAttempts = 5;
     private boolean isBlocked = false;
+    private final int digitsPinNumber = 4;
 
     @Override
     public void setPin(int pin) {
@@ -20,7 +21,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
         }
 
         int pinLength = String.valueOf(pin).length();
-        if (pinLength != 4) {
+        if (pinLength != this.digitsPinNumber) {
             throw new IllegalArgumentException("pin must be 4 characters long");
         }
 

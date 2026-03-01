@@ -66,7 +66,7 @@ public class CircularListTest {
         this.queue.push(pushValue1);
         this.queue.push(pushValue2);
 
-        assertEquals(this.queue.peek(), pushValue1);
+        assertEquals(pushValue1, this.queue.peek());
     }
 
 }

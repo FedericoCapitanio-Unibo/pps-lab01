@@ -18,4 +18,11 @@ class MinMaxStackImplTest {
     public void stackShouldBeEmpty() {
         assertTrue(this.stack.isEmpty());
     }
+
+    @Test
+    public void stackSizeShouldBeZero() {
+        final int initialStackSize = 0;
+        assertEquals(initialStackSize, this.stack.size());
+    }
+
 }

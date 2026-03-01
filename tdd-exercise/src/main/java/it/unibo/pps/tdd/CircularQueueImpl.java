@@ -5,13 +5,14 @@ import java.util.ArrayList;
 public class CircularQueueImpl implements CircularQueue {
 
     private final ArrayList<Integer> queue = new ArrayList<Integer>();
+    private final int MAX_CAPACITY = 5;
 
     @Override
     public void push(int value) {
 
     }
 
-    private void emptyStackCheck() {
+    private void emptyQueueCheck() {
         if (this.queue.isEmpty()) {
             throw new IllegalStateException("stack is empty");
         }
@@ -19,17 +20,17 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public void remove() {
-        this.emptyStackCheck();
+        this.emptyQueueCheck();
     }
 
     @Override
     public int maxCapacity() {
-        return 0;
+        return MAX_CAPACITY;
     }
 
     @Override
     public int peek() {
-        this.emptyStackCheck();
+        this.emptyQueueCheck();
         return 0;
     }
 

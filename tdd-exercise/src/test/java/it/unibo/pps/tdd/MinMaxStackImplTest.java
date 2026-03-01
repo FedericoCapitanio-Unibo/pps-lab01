@@ -74,4 +74,13 @@ class MinMaxStackImplTest {
         assertEquals(this.initialStackSize, this.stack.size());
     }
 
+    @Test
+    public void getMinShouldFailOnEmptyStack() {
+        assertThrows(IllegalStateException.class, () -> this.stack.getMin());
+    }
+
+    @Test
+    public void getMaxShouldFailOnEmptyStack() {
+        assertThrows(IllegalStateException.class, () -> this.stack.getMax());
+    }
 }

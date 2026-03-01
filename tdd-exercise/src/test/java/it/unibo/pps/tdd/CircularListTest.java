@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -23,4 +24,12 @@ public class CircularListTest {
         final CircularQueueImpl queue = new CircularQueueImpl();
         assertTrue(queue.isEmpty());
     }
+
+    @Test
+    public void sizeShouldBeZero() {
+        final int initialSize = 0;
+
+        assertEquals(initialSize, this.queue.size());
+    }
+
 }

@@ -33,6 +33,6 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int size() {
-        return 0;
+        return this.queue.size();
     }
 }

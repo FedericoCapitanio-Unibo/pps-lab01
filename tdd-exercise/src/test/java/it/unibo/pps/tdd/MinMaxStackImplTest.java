@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MinMaxStackImplTest {
 
     private MinMaxStackImpl stack;
+    private final int initialStackSize = 0;
 
     @BeforeEach
     public void init() {
@@ -21,14 +22,11 @@ class MinMaxStackImplTest {
 
     @Test
     public void stackSizeShouldBeZero() {
-        final int initialStackSize = 0;
-        assertEquals(initialStackSize, this.stack.size());
+        assertEquals(this.initialStackSize, this.stack.size());
     }
 
     @Test
     public void popShouldFailIfStackIsEmpty() {
-        final int initialStackSize = 0;
-
         assertThrows(IllegalStateException.class, () -> this.stack.pop());
     }
 

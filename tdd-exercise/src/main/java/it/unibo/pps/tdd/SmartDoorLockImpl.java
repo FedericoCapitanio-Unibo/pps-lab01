@@ -91,8 +91,15 @@ public class SmartDoorLockImpl implements SmartDoorLock {
         return this.failedAttempts;
     }
 
+    public boolean isDefaultPinSet() {
+        return this.pin == this.DEFAULT_PIN;
+    }
+
     @Override
     public void reset() {
-
+        this.isLocked = false;
+        this.isBlocked = false;
+        this.failedAttempts = 0;
+        this.pin = DEFAULT_PIN;
     }
 }

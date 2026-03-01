@@ -16,7 +16,8 @@ public class MinMaxStackImpl implements MinMaxStack {
         if (stack.isEmpty()) {
             throw new IllegalStateException("stack is empty");
         }
-        return 0;
+        final int lastValue = this.stack.getLast();
+        return lastValue;
     }
 
     @Override

@@ -44,4 +44,12 @@ class MinMaxStackImplTest {
         assertEquals(finalSize, this.stack.size());
     }
 
+    @Test public void popShouldReturnAddedValue() {
+        final int pushValue = 1;
+        this.stack.push(pushValue);
+
+        final int getValueByPop = this.stack.pop();
+        assertEquals(pushValue, getValueByPop);
+    }
+
 }

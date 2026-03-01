@@ -125,4 +125,16 @@ public class SmartDoorLockTest {
         assertTrue(this.lock.getFailedAttempts() > failedAttempts);
     }
 
+    @Test
+    public void lockShouldBeBlockedAfterNumberOfFailedAttempts() {
+        final int rightTestPin = 1234;
+        final int wrongTestPin = 5678;
+        final int maxAttempts = this.lock.getMaxAttempts();
+
+        this.lock.setPin(rightTestPin);
+        this.lock.unlock(wrongTestPin);
+
+        assertTrue(this.lock.isBlocked());
+    }
+
 }

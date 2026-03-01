@@ -6,6 +6,8 @@ public class SmartDoorLockImpl implements SmartDoorLock {
     private int pin = DEFAULT_PIN;
     private boolean isLocked = false;
     private int failedAttempts = 0;
+    private final int maxAttempts = 0;
+    private boolean isBlocked = false;
 
     @Override
     public void setPin(int pin) {
@@ -45,6 +47,9 @@ public class SmartDoorLockImpl implements SmartDoorLock {
             this.isLocked = false;
         } else {
             this.failedAttempts ++;
+            if (failedAttempts > maxAttempts) {
+                this.isBlocked = true;
+            }
         }
 
     }
@@ -55,7 +60,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
             throw new IllegalStateException("no pin set");
         }
 
-        if (this.isLocked()) {
+        if (this.isLocked) {
             throw new IllegalStateException("lock is already locked");
         }
 
@@ -69,12 +74,12 @@ public class SmartDoorLockImpl implements SmartDoorLock {
 
     @Override
     public boolean isBlocked() {
-        return false;
+        return this.isBlocked;
     }
 
     @Override
     public int getMaxAttempts() {
-        return 0;
+        return this.maxAttempts;
     }
 
     @Override

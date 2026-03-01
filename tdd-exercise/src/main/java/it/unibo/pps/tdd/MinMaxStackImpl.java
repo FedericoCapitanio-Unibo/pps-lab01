@@ -12,7 +12,7 @@ public class MinMaxStackImpl implements MinMaxStack {
     }
 
     private void emptyStackCheck() {
-        if (stack.isEmpty()) {
+        if (this.stack.isEmpty()) {
             throw new IllegalStateException("stack is empty");
         }
     }

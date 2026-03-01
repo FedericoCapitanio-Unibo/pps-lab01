@@ -9,8 +9,12 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public void push(int value) {
-        this.queue.addLast(value);
-
+        if (this.size() == this.MAX_CAPACITY) {
+            this.remove();
+            this.queue.addFirst(value);
+        } else {
+            this.queue.addLast(value);
+        }
     }
 
     private void emptyQueueCheck() {

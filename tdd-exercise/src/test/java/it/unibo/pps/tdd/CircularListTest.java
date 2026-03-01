@@ -69,4 +69,16 @@ public class CircularListTest {
         assertEquals(pushValue1, this.queue.peek());
     }
 
+    @Test
+    public void pushShouldAddElementOnTopIfQueueIsFull() {
+        final int maxCapacity = this.queue.maxCapacity();
+        int expectedValueOnTopAfterPush = maxCapacity + 1;
+
+        for (int i = 0; i <= this.queue.maxCapacity() + 1; i++) {
+            this.queue.push(i);
+        }
+
+        assertEquals(expectedValueOnTopAfterPush, this.queue.peek());
+    }
+
 }

@@ -52,4 +52,12 @@ class MinMaxStackImplTest {
         assertEquals(pushValue, getValueByPop);
     }
 
+    @Test public void peekShouldReturnAddedValue() {
+        final int pushValue = 1;
+        this.stack.push(pushValue);
+
+        final int getValueByPeek = this.stack.peek();
+        assertEquals(pushValue, getValueByPeek);
+    }
+
 }

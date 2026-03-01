@@ -30,4 +30,9 @@ class MinMaxStackImplTest {
         assertThrows(IllegalStateException.class, () -> this.stack.pop());
     }
 
+    @Test
+    public void peekShouldFailIfStackIsEmpty() {
+        assertThrows(IllegalStateException.class, () -> this.stack.peek());
+    }
+
 }

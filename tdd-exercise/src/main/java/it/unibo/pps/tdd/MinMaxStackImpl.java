@@ -5,9 +5,21 @@ import java.util.ArrayList;
 public class MinMaxStackImpl implements MinMaxStack {
 
     private final ArrayList<Integer> stack = new ArrayList<Integer>();
+    private final int DEFAULT_MIN_VALUE = -1;
+    private final int DEFAULT_MAX_VALUE = -1;
+    private int minValue = DEFAULT_MIN_VALUE;
+    private int maxValue = DEFAULT_MAX_VALUE;
 
     @Override
     public void push(int value) {
+        if (this.minValue == DEFAULT_MIN_VALUE || value < this.minValue) {
+            this.minValue = value;
+        }
+
+        if (this.maxValue == DEFAULT_MAX_VALUE || value > this.maxValue) {
+            this.maxValue = value;
+        }
+
         this.stack.add(value);
     }
 
@@ -34,24 +46,13 @@ public class MinMaxStackImpl implements MinMaxStack {
     @Override
     public int getMin() {
         emptyStackCheck();
-
-        int min = this.stack.getFirst();
-        for (int num : this.stack) {
-            min = Math.min(min, num);
-        }
-
-        return min;
+        return this.minValue;
     }
 
     @Override
     public int getMax() {
         emptyStackCheck();
-        int max = this.stack.getFirst();
-        for (int num : this.stack) {
-            max = Math.max(max, num);
-        }
-
-        return max;
+        return this.maxValue;
     }
 
     @Override

@@ -35,4 +35,13 @@ class MinMaxStackImplTest {
         assertThrows(IllegalStateException.class, () -> this.stack.peek());
     }
 
+    @Test
+    public void stackSizeShouldIncreaseOnPush() {
+        final int pushValue = 1;
+        final int finalSize = this.initialStackSize + 1;
+
+        this.stack.push(pushValue);
+        assertEquals(finalSize, this.stack.size());
+    }
+
 }

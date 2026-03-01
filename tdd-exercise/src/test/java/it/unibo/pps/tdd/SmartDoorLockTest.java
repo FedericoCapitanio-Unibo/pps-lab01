@@ -132,7 +132,11 @@ public class SmartDoorLockTest {
         final int maxAttempts = this.lock.getMaxAttempts();
 
         this.lock.setPin(rightTestPin);
-        this.lock.unlock(wrongTestPin);
+
+        // loop to iterate a number of time that is the lock max attempts + 1, to generate block state
+        for (int i = 0; i < maxAttempts + 1; i++){
+            this.lock.unlock(wrongTestPin);
+        }
 
         assertTrue(this.lock.isBlocked());
     }

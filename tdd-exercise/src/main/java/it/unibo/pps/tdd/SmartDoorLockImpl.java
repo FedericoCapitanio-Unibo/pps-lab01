@@ -6,7 +6,7 @@ public class SmartDoorLockImpl implements SmartDoorLock {
     private int pin = DEFAULT_PIN;
     private boolean isLocked = false;
     private int failedAttempts = 0;
-    private final int maxAttempts = 0;
+    private final int maxAttempts = 5;
     private boolean isBlocked = false;
 
     @Override

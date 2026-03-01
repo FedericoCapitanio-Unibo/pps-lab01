@@ -49,4 +49,13 @@ public class CircularListTest {
         assertEquals(queueSizeAfterPush, this.queue.size());
     }
 
+    @Test
+    public void sizeShouldDecreaseOnRemove() {
+        final int pushValue = 1;
+
+        this.queue.push(pushValue);
+        this.queue.remove();
+        assertEquals(this.initialSize, this.queue.size());
+    }
+
 }

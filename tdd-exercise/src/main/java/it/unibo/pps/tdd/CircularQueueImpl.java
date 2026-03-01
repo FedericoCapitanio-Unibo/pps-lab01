@@ -22,6 +22,7 @@ public class CircularQueueImpl implements CircularQueue {
     @Override
     public void remove() {
         this.emptyQueueCheck();
+        this.queue.removeFirst();
     }
 
     @Override

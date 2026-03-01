@@ -83,4 +83,27 @@ class MinMaxStackImplTest {
     public void getMaxShouldFailOnEmptyStack() {
         assertThrows(IllegalStateException.class, () -> this.stack.getMax());
     }
+
+    @Test
+    public void popShouldReturnLastPushedValue() {
+        final int firstValue = 1;
+        final int secondValue = 2;
+
+        this.stack.push(firstValue);
+        this.stack.push(secondValue);
+
+        assertEquals(secondValue, this.stack.pop());
+    }
+
+    @Test
+    public void peekShouldReturnLastPushedValue() {
+        final int firstValue = 1;
+        final int secondValue = 2;
+
+        this.stack.push(firstValue);
+        this.stack.push(secondValue);
+
+        assertEquals(secondValue, this.stack.peek());
+    }
+
 }

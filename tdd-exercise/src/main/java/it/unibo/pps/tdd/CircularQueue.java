@@ -44,4 +44,17 @@ public interface CircularQueue {
      */
     int peek();
 
+    /**
+     * Checks if the stack is empty.
+     *
+     * @return true if the stack is empty, false otherwise.
+     */
+    boolean isEmpty();
+
+    /**
+     * Gets the number of elements currently in the stack.
+     *
+     * @return The size of the stack.
+     */
+    int size();
 }

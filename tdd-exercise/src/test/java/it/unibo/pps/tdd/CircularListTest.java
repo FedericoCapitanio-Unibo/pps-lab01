@@ -79,6 +79,7 @@ public class CircularListTest {
             this.queue.push(i);
         }
         assertEquals(expectedValueOnTopAfterPush, this.queue.peek());
+        assertEquals(maxCapacity, this.queue.size());
     }
 
 }

@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CircularListTest {
 
     private CircularQueueImpl queue;
+    private final int initialSize = 0;
 
     @BeforeEach
     public void init() {
@@ -26,9 +27,7 @@ public class CircularListTest {
 
     @Test
     public void sizeShouldBeZero() {
-        final int initialSize = 0;
-
-        assertEquals(initialSize, this.queue.size());
+        assertEquals(this.initialSize, this.queue.size());
     }
 
     @Test
@@ -39,6 +38,15 @@ public class CircularListTest {
     @Test
     public void shouldNotPeekOnEmptyQueue() {
         assertThrows(IllegalStateException.class, () -> this.queue.peek());
+    }
+
+    @Test
+    public void sizeShouldIncreaseOnPush() {
+        final int pushValue = 1;
+        final int queueSizeAfterPush = this.initialSize + 1;
+
+        this.queue.push(pushValue);
+        assertEquals(queueSizeAfterPush, this.queue.size());
     }
 
 }

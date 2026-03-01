@@ -9,6 +9,7 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public void push(int value) {
+        this.queue.addLast(value);
 
     }
 

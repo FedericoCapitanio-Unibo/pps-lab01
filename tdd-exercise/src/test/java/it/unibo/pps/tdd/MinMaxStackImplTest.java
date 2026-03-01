@@ -44,20 +44,34 @@ class MinMaxStackImplTest {
         assertEquals(finalSize, this.stack.size());
     }
 
-    @Test public void popShouldReturnAddedValue() {
+    @Test
+    public void popShouldReturnAddedValue() {
         final int pushValue = 1;
+
         this.stack.push(pushValue);
 
         final int getValueByPop = this.stack.pop();
         assertEquals(pushValue, getValueByPop);
     }
 
-    @Test public void peekShouldReturnAddedValue() {
+    @Test
+    public void peekShouldReturnAddedValue() {
         final int pushValue = 1;
+
         this.stack.push(pushValue);
 
         final int getValueByPeek = this.stack.peek();
         assertEquals(pushValue, getValueByPeek);
+    }
+
+    @Test
+    public void popShouldRemoveAddedValue() {
+        final int pushValue = 1;
+
+        this.stack.push(pushValue);
+        this.stack.pop();
+
+        assertEquals(this.initialStackSize, this.stack.size());
     }
 
 }

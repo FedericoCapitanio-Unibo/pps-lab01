@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Queue;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -13,15 +15,22 @@ public class CircularListTest {
 
     private CircularQueueImpl queue;
     private final int initialSize = 0;
+    private final int MAX_CAPACITY = 100;
 
     @BeforeEach
     public void init() {
-        this.queue = new CircularQueueImpl();
+        this.queue = new CircularQueueImpl(this.MAX_CAPACITY);
+    }
+
+    @Test
+    public void maxCapacityShouldNotBeNegative() {
+        final int negativeCapacity = -5;
+        assertThrows(IllegalArgumentException.class, () -> new CircularQueueImpl(negativeCapacity));
     }
 
     @Test
     public void queueShouldBeEmpty() {
-        final CircularQueueImpl queue = new CircularQueueImpl();
+        final CircularQueueImpl queue = new CircularQueueImpl(this.MAX_CAPACITY);
         assertTrue(queue.isEmpty());
     }
 

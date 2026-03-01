@@ -5,11 +5,18 @@ import java.util.ArrayList;
 public class CircularQueueImpl implements CircularQueue {
 
     private final ArrayList<Integer> queue = new ArrayList<Integer>();
-    private final int MAX_CAPACITY = 100;
+    private int max_capacity;
+
+    public CircularQueueImpl(int max_capacity) {
+        if (max_capacity < 0) {
+            throw new IllegalArgumentException("max capacity cannot be zero or negative");
+        }
+        this.max_capacity = max_capacity;
+    }
 
     @Override
     public void push(int value) {
-        if (this.size() == this.MAX_CAPACITY) {
+        if (this.size() == this.max_capacity) {
             this.remove();
             this.queue.addFirst(value);
         } else {
@@ -31,7 +38,7 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int maxCapacity() {
-        return MAX_CAPACITY;
+        return max_capacity;
     }
 
     @Override

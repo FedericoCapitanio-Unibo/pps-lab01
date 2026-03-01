@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SmartDoorLockTest {
 
     private SmartDoorLockImpl lock;
+    private final int TEST_PIN_VALID = 1234;
 
     @BeforeEach
     public void init() {
@@ -26,8 +27,7 @@ public class SmartDoorLockTest {
 
     @Test
     public void lockUnlockShouldFailIfNoPinIsSet() {
-        final int testPin = 1234;
-        assertThrows(IllegalStateException.class, () -> this.lock.unlock(testPin));
+        assertThrows(IllegalStateException.class, () -> this.lock.unlock(TEST_PIN_VALID));
     }
 
     @Test
@@ -53,85 +53,71 @@ public class SmartDoorLockTest {
 
     @Test
     public void lockPinShouldNotBeSetIfAlreadySet() {
-        final int testPin1 = 1234;
         final int testPin2 = 4567;
 
-        this.lock.setPin(testPin1);
+        this.lock.setPin(TEST_PIN_VALID);
         assertThrows(IllegalStateException.class, () -> this.lock.setPin(testPin2));
     }
 
     @Test
     public void lockShouldBeLockedIfPinIsSet() {
-        final int testPin = 1234;
-
-        this.lock.setPin(testPin);
+        this.lock.setPin(TEST_PIN_VALID);
         assertTrue(this.lock.isLocked());
     }
 
     @Test
     public void lockShouldBeRemainLockedIfUnlockPinIsWrong() {
-        final int rightTestPin = 1234;
         final int wrongTestPin = 5678;
 
-        this.lock.setPin(rightTestPin);
+        this.lock.setPin(TEST_PIN_VALID);
         this.lock.unlock(wrongTestPin);
         assertTrue(this.lock.isLocked());
     }
 
     @Test
     public void lockShouldBeUnlocked() {
-        final int testPin = 1234;
-
-        this.lock.setPin(testPin);
-        this.lock.unlock(testPin);
+        this.lock.setPin(TEST_PIN_VALID);
+        this.lock.unlock(TEST_PIN_VALID);
         assertFalse(this.lock.isLocked());
     }
 
     @Test
     public void lockCannotBeLockedIfAlreadyLocked() {
-        final int testPin = 1234;
-
-        this.lock.setPin(testPin);
+        this.lock.setPin(TEST_PIN_VALID);
         assertThrows(IllegalStateException.class, () -> this.lock.lock());
     }
 
     @Test
     public void lockCannotBeUnlockedIfAlreadyUnlocked() {
-        final int testPin = 1234;
-
-        this.lock.setPin(testPin);
-        this.lock.unlock(testPin);
-        assertThrows(IllegalStateException.class, () -> this.lock.unlock(testPin));
+        this.lock.setPin(TEST_PIN_VALID);
+        this.lock.unlock(TEST_PIN_VALID);
+        assertThrows(IllegalStateException.class, () -> this.lock.unlock(TEST_PIN_VALID));
     }
 
     @Test
     public void lockShouldBeLockedAfterSetAndUnlock() {
-        final int testPin = 1234;
-
-        this.lock.setPin(testPin);
-        this.lock.unlock(testPin);
+        this.lock.setPin(TEST_PIN_VALID);
+        this.lock.unlock(TEST_PIN_VALID);
         this.lock.lock();
         assertTrue(this.lock.isLocked());
     }
 
     @Test
     public void failedAttemptsShouldIncreaseOnUnlockFail() {
-        final int rightTestPin = 1234;
         final int wrongTestPin = 5678;
         final int failedAttempts = this.lock.getFailedAttempts();
 
-        this.lock.setPin(rightTestPin);
+        this.lock.setPin(TEST_PIN_VALID);
         this.lock.unlock(wrongTestPin);
         assertTrue(this.lock.getFailedAttempts() > failedAttempts);
     }
 
     @Test
     public void lockShouldBeBlockedAfterNumberOfFailedAttempts() {
-        final int rightTestPin = 1234;
         final int wrongTestPin = 5678;
         final int maxAttempts = this.lock.getMaxAttempts();
 
-        this.lock.setPin(rightTestPin);
+        this.lock.setPin(TEST_PIN_VALID);
 
         // loop to iterate a number of time that is the lock max attempts + 1, to generate block state
         for (int i = 0; i < maxAttempts + 1; i++){
@@ -143,28 +129,26 @@ public class SmartDoorLockTest {
 
     @Test
     public void unlockNotPermittedIfLockIsLocked() {
-        final int rightTestPin = 1234;
         final int wrongTestPin = 5678;
         final int maxAttempts = this.lock.getMaxAttempts();
 
-        this.lock.setPin(rightTestPin);
+        this.lock.setPin(TEST_PIN_VALID);
 
         // loop to iterate a number of time that is the lock max attempts + 1, to generate block state
         for (int i = 0; i < maxAttempts + 1; i++){
             this.lock.unlock(wrongTestPin);
         }
 
-        assertThrows(IllegalStateException.class, () -> this.lock.unlock(rightTestPin));
+        assertThrows(IllegalStateException.class, () -> this.lock.unlock(TEST_PIN_VALID));
     }
 
     @Test
     public void lockShouldReset() {
-        final int rightTestPin = 1234;
         final int wrongTestPin = 5678;
         final int maxAttempts = this.lock.getMaxAttempts();
         final int initialFailedAttempts = this.lock.getFailedAttempts();
 
-        this.lock.setPin(rightTestPin);
+        this.lock.setPin(TEST_PIN_VALID);
 
         // loop to iterate a number of time that is the lock max attempts + 1, to generate block state
         for (int i = 0; i < maxAttempts + 1; i++){

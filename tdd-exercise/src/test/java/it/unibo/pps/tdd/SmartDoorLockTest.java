@@ -162,6 +162,7 @@ public class SmartDoorLockTest {
         final int rightTestPin = 1234;
         final int wrongTestPin = 5678;
         final int maxAttempts = this.lock.getMaxAttempts();
+        final int initialFailedAttempts = this.lock.getFailedAttempts();
 
         this.lock.setPin(rightTestPin);
 
@@ -174,7 +175,7 @@ public class SmartDoorLockTest {
 
         assertFalse(this.lock.isLocked());
         assertFalse(this.lock.isBlocked());
-        assertTrue(this.lock.getFailedAttempts() == 0);
+        assertEquals(initialFailedAttempts, this.lock.getFailedAttempts());
         assertTrue(this.lock.isDefaultPinSet());
 
     }

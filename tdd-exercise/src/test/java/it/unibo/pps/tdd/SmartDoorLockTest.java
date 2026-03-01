@@ -118,10 +118,11 @@ public class SmartDoorLockTest {
     public void failedAttemptsShouldIncreaseOnUnlockFail() {
         final int rightTestPin = 1234;
         final int wrongTestPin = 5678;
+        final int failedAttempts = this.lock.getFailedAttempts();
 
         this.lock.setPin(rightTestPin);
         this.lock.unlock(wrongTestPin);
-        assertTrue(this.lock.getFailedAttempts() > 0);
+        assertTrue(this.lock.getFailedAttempts() > failedAttempts);
     }
 
 }

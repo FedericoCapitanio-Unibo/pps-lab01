@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CircularQueueImpl implements CircularQueue {
 
     private final ArrayList<Integer> queue = new ArrayList<Integer>();
-    private final int MAX_CAPACITY = 5;
+    private final int MAX_CAPACITY = 100;
 
     @Override
     public void push(int value) {

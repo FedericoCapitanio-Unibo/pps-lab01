@@ -74,10 +74,10 @@ public class CircularListTest {
         final int maxCapacity = this.queue.maxCapacity();
         int expectedValueOnTopAfterPush = maxCapacity + 1;
 
+        // push a number of element that allow the test to force circular behavior
         for (int i = 0; i <= this.queue.maxCapacity() + 1; i++) {
             this.queue.push(i);
         }
-
         assertEquals(expectedValueOnTopAfterPush, this.queue.peek());
     }
 

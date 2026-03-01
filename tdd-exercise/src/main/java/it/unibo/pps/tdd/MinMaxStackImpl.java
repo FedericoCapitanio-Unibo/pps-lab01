@@ -46,7 +46,12 @@ public class MinMaxStackImpl implements MinMaxStack {
     @Override
     public int getMax() {
         emptyStackCheck();
-        return 0;
+        int max = this.stack.getFirst();
+        for (int num : this.stack) {
+            max = Math.max(max, num);
+        }
+
+        return max;
     }
 
     @Override

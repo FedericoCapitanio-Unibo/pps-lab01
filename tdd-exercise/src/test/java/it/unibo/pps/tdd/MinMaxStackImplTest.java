@@ -116,4 +116,15 @@ class MinMaxStackImplTest {
 
         assertEquals(lowerValue, this.stack.getMin());
     }
+
+    @Test
+    public void getMaxShouldReturnMaxValue() {
+        final int lowerValue = 1;
+        final int higherValue = 2;
+
+        this.stack.push(lowerValue);
+        this.stack.push(higherValue);
+
+        assertEquals(higherValue, this.stack.getMax());
+    }
 }

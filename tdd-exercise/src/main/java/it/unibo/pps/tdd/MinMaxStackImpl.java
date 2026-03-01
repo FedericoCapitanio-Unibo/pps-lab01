@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MinMaxStackImpl implements MinMaxStack {
 
-    private ArrayList<Integer> stack = new ArrayList<Integer>();
+    private final ArrayList<Integer> stack = new ArrayList<Integer>();
 
     @Override
     public void push(int value) {

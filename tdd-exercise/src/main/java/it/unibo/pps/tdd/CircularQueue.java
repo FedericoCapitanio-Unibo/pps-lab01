@@ -16,14 +16,14 @@ package it.unibo.pps.tdd;
 public interface CircularQueue {
 
     /**
-     * Pushes an integer onto the queue.
+     * Pushes an integer into the queue.
      *
      * @param value The integer to push into the queue.
      */
     void push(int value);
 
     /**
-     * Pushes an integer onto the queue.
+     * Remove the oldest element from the queue.
      *
      * @throws IllegalStateException if the queue is empty.
      */

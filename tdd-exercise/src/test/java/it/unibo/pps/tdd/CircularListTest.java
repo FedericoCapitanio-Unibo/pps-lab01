@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The test suite for testing the CircularList implementation
@@ -30,6 +29,11 @@ public class CircularListTest {
         final int initialSize = 0;
 
         assertEquals(initialSize, this.queue.size());
+    }
+
+    @Test
+    public void shouldNotRemoveOnEmptyQueue() {
+        assertThrows(IllegalStateException.class, () -> this.queue.remove());
     }
 
 }

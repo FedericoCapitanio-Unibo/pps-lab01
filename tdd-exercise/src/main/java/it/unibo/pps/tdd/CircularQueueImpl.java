@@ -11,9 +11,15 @@ public class CircularQueueImpl implements CircularQueue {
 
     }
 
+    private void emptyStackCheck() {
+        if (this.queue.isEmpty()) {
+            throw new IllegalStateException("stack is empty");
+        }
+    }
+
     @Override
     public void remove() {
-
+        this.emptyStackCheck();
     }
 
     @Override

@@ -25,4 +25,11 @@ class MinMaxStackImplTest {
         assertEquals(initialStackSize, this.stack.size());
     }
 
+    @Test
+    public void popShouldFailIfStackIsEmpty() {
+        final int initialStackSize = 0;
+
+        assertThrows(IllegalStateException.class, () -> this.stack.pop());
+    }
+
 }

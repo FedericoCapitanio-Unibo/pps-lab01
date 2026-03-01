@@ -36,4 +36,9 @@ public class CircularListTest {
         assertThrows(IllegalStateException.class, () -> this.queue.remove());
     }
 
+    @Test
+    public void shouldNotPeekOnEmptyQueue() {
+        assertThrows(IllegalStateException.class, () -> this.queue.peek());
+    }
+
 }

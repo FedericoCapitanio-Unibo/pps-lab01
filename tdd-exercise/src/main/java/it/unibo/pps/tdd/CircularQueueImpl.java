@@ -29,6 +29,7 @@ public class CircularQueueImpl implements CircularQueue {
 
     @Override
     public int peek() {
+        this.emptyStackCheck();
         return 0;
     }
 

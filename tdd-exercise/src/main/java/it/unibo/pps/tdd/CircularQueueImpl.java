@@ -33,7 +33,7 @@ public class CircularQueueImpl implements CircularQueue {
     @Override
     public int peek() {
         this.emptyQueueCheck();
-        return 0;
+        return this.queue.getFirst();
     }
 
     @Override

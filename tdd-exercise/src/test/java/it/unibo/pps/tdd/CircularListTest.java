@@ -58,4 +58,15 @@ public class CircularListTest {
         assertEquals(this.initialSize, this.queue.size());
     }
 
+    @Test
+    public void peekShouldGiveTheTopQueueElement() {
+        final int pushValue1 = 1;
+        final int pushValue2 = 2;
+
+        this.queue.push(pushValue1);
+        this.queue.push(pushValue2);
+
+        assertEquals(this.queue.peek(), pushValue1);
+    }
+
 }
